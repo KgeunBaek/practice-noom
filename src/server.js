@@ -17,7 +17,11 @@ const wsServer = SocketIO(httpServer);
 wsServer.on("connection", (socket) => {
   socket.on("enter_room", (roomName, done) => {
     console.log(roomName);
-    setTimeout( ()=> { done(); }, 5000);
+    console.log(socket.id);
+    console.log(socket.rooms);    
+    socket.join(roomName);//채팅룸에 접속    
+    console.log(socket.rooms);
+    done();
     }
   );
 });
